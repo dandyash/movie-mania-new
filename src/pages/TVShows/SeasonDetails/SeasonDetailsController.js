@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import useGetTvShowSeasonDetails from "../../../apis/TVShows/TvShowSeasonDetails";
-import useGetTvShowDetails from "../../../apis/TVShows/TvShowDetails";
 
 const useSeasonDetailsController = () => {
   const { tvId, seasonNumber } = useParams();
