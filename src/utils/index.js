@@ -24,6 +24,8 @@ export const API_QUERY_KEY = {
     IMAGES: `MOVIE.IMAGES`,
     VIDEO: `MOVIE.VIDEOS`,
     REVIEWS: `MOVIE.REVIEWS`,
+    COLLECTION: `COLLECTION,`,
+    CREDITS: `CREDITS`,
   },
   TV: {
     LATEST: `TV.LATEST`,
@@ -39,7 +41,10 @@ export const API_QUERY_KEY = {
     VIDEO: `TV.VIDEOS`,
     REVIEWS: `TV.REVIEWS`,
     SEASON_DETAILS: `SEASON_DETAILS`,
+    CREDITS: `CREDITS`,
   },
+  PERSON: `PERSON`,
+  SEARCH: `SEARCH`,
 };
 
 export const API_ROUTES = {
@@ -72,6 +77,8 @@ export const API_ROUTES = {
     IMAGES: (movieId) => `/movie/${movieId}/images`,
     VIDEO: (movieId) => `/movie/${movieId}/videos`,
     REVIEWS: (movieId) => `/movie/${movieId}/reviews`,
+    COLLECTION: (collectionId) => `/collection/${collectionId}`,
+    CREDITS: (movieId) => `/movie/${movieId}/credits`,
   },
   TV: {
     LATEST: `/tv/latest`,
@@ -88,7 +95,10 @@ export const API_ROUTES = {
     REVIEWS: (tvId) => `/tv/${tvId}/reviews`,
     SEASON_DETAILS: (tvId, seasonNumber) =>
       `/tv/${tvId}/season/${seasonNumber}`,
+    CREDITS: (tvId) => `/tv/${tvId}/credits`,
   },
+  PERSON: (personId) => `/person/${personId}`,
+  SEARCH: `/search/multi`,
 };
 
 export const IMAGE_PATH = {
@@ -114,3 +124,9 @@ export const DISCOVER_FREE_ITEMS = [
   { label: "Movies", value: "movie" },
   { label: "TV Shows", value: "tv" },
 ];
+
+export const PersonPlaceHolder =
+  "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg";
+
+export const ImagePlaceHolder =
+  "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";

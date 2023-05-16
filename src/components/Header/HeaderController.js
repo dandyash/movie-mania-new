@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import useTheme from "../../hooks/useTheme";
 import useRequestToken from "../../apis/Authentication/RequestToken";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import useRequestSession from "../../apis/Authentication/RequestSession";
 import useFetchUserDetails from "../../apis/User/UserDetails";
 import randomColor from "randomcolor";
@@ -9,7 +9,10 @@ import useDeleteSession from "../../apis/Authentication/DeleteSession";
 import { NotificationContext } from "../../context/NotificationContext";
 
 const useHeaderController = () => {
+  const navigation = useNavigate();
   const [userData, setUserData] = useState();
+  const [isSearchBarViisible, setIsSearchBarViisible] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
   const { theme, setTheme } = useTheme();
   const [queryParameters, setQueryParameters] = useSearchParams();
   const requestToken = useRequestToken();
@@ -61,6 +64,7 @@ const useHeaderController = () => {
 
   const handleLogout = () => {
     deleteUserSession.mutate(localStorage.getItem("session"));
+    requestToken.refetch();
   };
 
   useEffect(() => {
@@ -69,6 +73,17 @@ const useHeaderController = () => {
       setUserData();
     }
   }, [deleteUserSession.isSuccess, deleteUserSession.data]);
+
+  const toggleSearchBarVisibility = (flag) => {
+    setIsSearchBarViisible(flag);
+    setSearchVal("");
+  };
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    navigation(`/search?query=${searchVal}`);
+    toggleSearchBarVisibility(false);
+  };
 
   const collapseMenuItems = [
     [userData?.username, "/"],
@@ -84,6 +99,11 @@ const useHeaderController = () => {
     profileBg,
     requestToken: requestToken?.data?.data?.request_token,
     collapseMenuItems,
+    isSearchBarViisible,
+    toggleSearchBarVisibility,
+    onSearchSubmit,
+    searchVal,
+    setSearchVal,
   };
 };
 export default useHeaderController;

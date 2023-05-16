@@ -18,20 +18,20 @@ const useHomeController = () => {
   const PoppularTvShowsList = useGetPopularTvShows();
 
   return {
-    HeroBannerList,
-    TrendingList,
-    DiscoverFreeMediaList,
-    PopularMoviesList,
-    PoppularTvShowsList,
+    HeroBannerList: HeroBannerList?.data?.data?.results,
+    TrendingList: TrendingList?.data?.data?.results,
+    DiscoverFreeMediaList: DiscoverFreeMediaList?.data?.data?.results,
+    PopularMoviesList: PopularMoviesList?.data?.data?.results,
+    PoppularTvShowsList: PoppularTvShowsList?.data?.data?.results,
     trendingPeriod,
     setTrendingPeriod,
     discoverMediaType,
     setdiscoverMediaType,
     isDataLoading:
-      HeroBannerList.isLoading &&
-      TrendingList.isLoading &&
-      DiscoverFreeMediaList.isLoading &&
-      PopularMoviesList.isLoading &&
+      HeroBannerList.isLoading ||
+      TrendingList.isLoading ||
+      DiscoverFreeMediaList.isLoading ||
+      PopularMoviesList.isLoading ||
       PoppularTvShowsList.isLoading,
   };
 };

@@ -4,7 +4,8 @@ const useFavoriteMovies = () => {
   const moviesList = useFetchFavoriteMovies();
 
   return {
-    moviesList,
+    moviesList: moviesList?.data?.data?.results,
+    isDataLoading: moviesList.isLoading,
   };
 };
 export default useFavoriteMovies;

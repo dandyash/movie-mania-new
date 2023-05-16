@@ -12,16 +12,16 @@ const useTvShowsController = () => {
   const AiringTodayTvShowsList = useGetAiringTodayTvShows();
 
   return {
-    HeroBannerList,
-    TrendingTvShowsList,
-    TopRatedTvShowsList,
-    AiringTodayTvShowsList,
+    HeroBannerList: HeroBannerList?.data?.data?.results,
+    TrendingTvShowsList: TrendingTvShowsList?.data?.data?.results,
+    TopRatedTvShowsList: TopRatedTvShowsList?.data?.data?.results,
+    AiringTodayTvShowsList: AiringTodayTvShowsList?.data?.data?.results,
     trendingPeriod,
     setTrendingPeriod,
     isDataLoading:
-      HeroBannerList.isLoading &&
-      TrendingTvShowsList.isLoading &&
-      TopRatedTvShowsList.isLoading &&
+      HeroBannerList.isLoading ||
+      TrendingTvShowsList.isLoading ||
+      TopRatedTvShowsList.isLoading ||
       AiringTodayTvShowsList.isLoading,
   };
 };

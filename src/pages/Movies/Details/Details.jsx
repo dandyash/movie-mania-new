@@ -3,7 +3,7 @@ import useMovieDetailsController from './DetailsController'
 import FullScreenLoadingSpinner from './../../../components/LoadingSpinner/FullScreenLoadingSpinner';
 import { IMAGE_PATH } from '../../../utils';
 import { CircleProgress } from 'react-gradient-progress';
-import { HeartIcon as HeartSolidIcon, BookmarkIcon as BookmarkSolidIcon, PlayIcon, StopIcon } from '@heroicons/react/24/solid'
+import { HeartIcon as HeartSolidIcon, BookmarkIcon as BookmarkSolidIcon, PlayIcon, StopIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
 import { HeartIcon as HeartOutLinedIcon, BookmarkIcon as BookmarkOutlinedIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline';
 import CastAvatarCard from '../../../components/CastAvatarCard';
 import { Link } from 'react-router-dom';
@@ -118,11 +118,24 @@ const Details = () => {
                                 </table>
                             </div>
                         </div>
+
                         {/* Latest Season Section */}
-                        {/* <div className='flex flex-col gap-5'>
-                            <h2 className='text-4xl font-bold'>Latest Season</h2>
-                            <SeasonCard data={movieDetails?.seasons[movieDetails?.seasons?.length - 1]} hasMoreThanOne={movieDetails?.seasons?.length > 1} isDirect={true} />
-                        </div> */}
+                        {movieDetails?.belongs_to_collection &&
+                            <div className='flex flex-col gap-5'>
+                                <h2 className='text-4xl font-bold'>Belongs to collection</h2>
+                                <div className='relative rounded-xl overflow-hidden aspect-[3/1] flex items-center group'>
+                                    <img src={IMAGE_PATH.ORIGINAL + movieDetails?.belongs_to_collection?.backdrop_path} alt="" />
+                                    <div className='absolute inset-0 bg-white/75 dark:bg-black/75 backdrop-blur-sm flex flex-col justify-center gap-5 p-10 opacity-0 group-hover:opacity-100 transition-all'>
+                                        <h2 className='text-3xl font-black'>{movieDetails?.belongs_to_collection?.name}</h2>
+                                        <Link to={`/collection/${movieDetails?.belongs_to_collection?.id}`} className="w-fit flex items-center gap-3 hover:gap-5 text-lg border-2 border-red-500 py-1 px-3 bg-red-500 font-medium transition-all rounded-lg">
+                                            Details
+                                            <ArrowRightIcon height={20} />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
                         {/* Reviews Section */}
                         <div className='flex flex-col gap-5'>
                             <h2 className='text-4xl font-bold'>Reviews</h2>
@@ -151,7 +164,7 @@ const Details = () => {
 
                 <div className='px-5 pb-5'>
                     {/* Similar Suggestions Section */}
-                    <HorizontalScrollingList isTabbable={false} title={'Similar Shows'} slidesPerView={6} data={movieDetails?.recommendations?.results} />
+                    <HorizontalScrollingList isTabbable={false} title={'Similar Shows'} slidesPerView={6} data={movieDetails?.recommendations?.results.concat(movieDetails?.similar?.results)} />
                 </div>
             </section>
             <VideoModal isOpen={isVideoModalOpen} hideModal={hideModal} videoKey={videoKey} />

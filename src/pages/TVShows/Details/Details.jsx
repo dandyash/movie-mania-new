@@ -154,7 +154,7 @@ const Details = () => {
 
                 <div className='px-5 pb-5'>
                     {/* Similar Suggestions Section */}
-                    <HorizontalScrollingList isTabbable={false} title={'Similar Shows'} slidesPerView={6} data={tvShowDetails?.similar?.results} />
+                    <HorizontalScrollingList isTabbable={false} title={'Similar Shows'} slidesPerView={6} data={tvShowDetails?.recommendations?.results.concat(tvShowDetails?.similar?.results)} />
                 </div>
             </section>
             <VideoModal isOpen={isVideoModalOpen} hideModal={hideModal} videoKey={videoKey} />

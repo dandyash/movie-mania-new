@@ -4,9 +4,9 @@ import ImageCard from "../../../components/ImageCard";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
 const FavoriteTvShows = () => {
-  const { tvShowsList } = useFavoriteTvShowsController();
+  const { tvShowsList, isDataLoading } = useFavoriteTvShowsController();
 
-  if (tvShowsList.isLoading || tvShowsList.isFetching) {
+  if (isDataLoading) {
     return (
       <div className="flex items-center justify-center py-10">
         <LoadingSpinner />
@@ -16,7 +16,7 @@ const FavoriteTvShows = () => {
 
   return (
     <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 pb-10">
-      {tvShowsList.data.data.results.map((tvShow) => (
+      {tvShowsList.map((tvShow) => (
         <ImageCard
           key={tvShow.id}
           data={tvShow}

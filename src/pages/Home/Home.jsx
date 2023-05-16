@@ -25,12 +25,12 @@ const Home = () => {
 
   return (
     <>
-      <CarouselBanner data={HeroBannerList?.data?.data?.results} />
+      <CarouselBanner data={HeroBannerList} />
       <section className="px-5 pb-5">
-        <HorizontalScrollingList data={TrendingList?.data?.data?.results} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending"} slidesPerView={6} />
-        <HorizontalScrollingList data={DiscoverFreeMediaList?.data?.data?.results} isTabbable={true} tabData={DISCOVER_FREE_ITEMS} activeTab={discoverMediaType} setActiveTab={setdiscoverMediaType} title={"Free To Watch"} slidesPerView={6} />
-        <HorizontalScrollingList data={PopularMoviesList?.data?.data?.results} title={"Popular Movies"} slidesPerView={6} />
-        <HorizontalScrollingList data={PoppularTvShowsList?.data?.data?.results} title={"Popular TV Shows"} slidesPerView={6} />
+        <HorizontalScrollingList data={TrendingList} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending"} slidesPerView={6} />
+        <HorizontalScrollingList data={DiscoverFreeMediaList} isTabbable={true} tabData={DISCOVER_FREE_ITEMS} activeTab={discoverMediaType} setActiveTab={setdiscoverMediaType} title={"Free To Watch"} slidesPerView={6} />
+        <HorizontalScrollingList data={PopularMoviesList} title={"Popular Movies"} slidesPerView={6} />
+        <HorizontalScrollingList data={PoppularTvShowsList} title={"Popular TV Shows"} slidesPerView={6} />
       </section>
     </>
   );

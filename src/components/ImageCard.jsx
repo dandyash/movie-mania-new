@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGE_PATH } from "../utils";
+import { IMAGE_PATH, ImagePlaceHolder } from "../utils";
 import { Link } from "react-router-dom";
 import { CalendarIcon } from '@heroicons/react/24/solid'
 
@@ -10,7 +10,7 @@ const ImageCard = ({ data }) => {
       <div className="overflow-hidden rounded-xl">
         <img
           className="w-full aspect-[3.3/5] group-hover:scale-110 transition-all"
-          src={IMAGE_PATH.W_300 + data.poster_path}
+          src={data.poster_path ? IMAGE_PATH.W_300 + data.poster_path : ImagePlaceHolder}
           loading="lazy"
           alt={data.title || data.name}
         />
@@ -21,7 +21,7 @@ const ImageCard = ({ data }) => {
         </p>
         <span className="flex items-center gap-2">
           <CalendarIcon height={20} className="text-red-500" />
-          {`${releaseDate.toLocaleString("default", { month: "long", })} ${String(releaseDate.getDate()).padStart(2, "0")} ,${releaseDate.getFullYear()}`}
+          {`${releaseDate.toLocaleString("default", { month: "short", })} ${String(releaseDate.getDate()).padStart(2, "0")} ,${releaseDate.getFullYear()}`}
         </span>
       </div>
     </Link>

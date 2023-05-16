@@ -7,7 +7,7 @@ const TvShowDetails = async (tvId) => {
     params: {
       session_id: localStorage.getItem("session"),
       append_to_response:
-        "reviews,account_states,videos,credits,similar,content_ratings,keywords",
+        "reviews,account_states,videos,credits,recommendations,similar,content_ratings,keywords",
     },
   });
 };

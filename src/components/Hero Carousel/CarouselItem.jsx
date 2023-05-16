@@ -15,7 +15,7 @@ const CarouselItem = ({ data, rank }) => {
       />
       <div className="z-20 p-10 flex flex-col items-start justify-center gap-5 absolute inset-0 transition-all bg-gradient-to-r dark:from-black from-white from-30% to-transparent to-80%">
         <span className="text-red-500 text-xl font-bold">{`#${rank} in Trending`}</span>
-        <h1 className="text-5xl font-black w-2/5">{data.title || data.name}</h1>
+        <h1 className="text-5xl font-black w-2/4">{data.title || data.name}</h1>
         <div className="flex items-center gap-5">
           <Badge text={data.media_type === "movie" ? "movie" : "TV"} />
           <span className="flex items-center gap-2">

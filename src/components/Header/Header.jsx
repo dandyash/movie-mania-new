@@ -2,7 +2,7 @@ import React from "react";
 import useHeaderController from "./HeaderController";
 import { Link, NavLink } from "react-router-dom";
 import HeaderMenu from "../Menu";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import { MoonIcon, SunIcon, MagnifyingGlassCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   const {
@@ -12,6 +12,11 @@ const Header = () => {
     userData,
     profileBg,
     collapseMenuItems,
+    isSearchBarViisible,
+    toggleSearchBarVisibility,
+    onSearchSubmit,
+    searchVal,
+    setSearchVal
   } = useHeaderController();
   return (
     <header
@@ -29,6 +34,10 @@ const Header = () => {
           <span className="bg-red-500 absolute -inset-y-1 rounded-lg transition-all duration-300"></span>
         </div>
         <div className="flex items-center gap-5">
+          <form className="flex items-center relative" onSubmit={onSearchSubmit}>
+            <input type="text" name="searchBar" value={searchVal} onChange={(e) => setSearchVal(e.target.value)} title="Press Enter to Search" placeholder="Search..." id="searchBar" className={`${isSearchBarViisible ? "w-80 px-3 py-1" : "w-0 px-0 py-0"} transition-all text-lg bg-red-500 outline-none placeholder:text-white/75 rounded-full`} />
+            <button type="button" className="absolute inset-y-0 right-0 flex items-center" onClick={() => { isSearchBarViisible ? toggleSearchBarVisibility(false) : toggleSearchBarVisibility(true) }}>{isSearchBarViisible ? <XCircleIcon height={40} /> : <MagnifyingGlassCircleIcon height={40} />}</button>
+          </form>
           {userData ? (
             <HeaderMenu
               menuItems={collapseMenuItems}

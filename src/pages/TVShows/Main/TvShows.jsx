@@ -22,11 +22,11 @@ const TvShows = () => {
 
     return (
         <>
-            <CarouselBanner data={HeroBannerList?.data?.data?.results} />
+            <CarouselBanner data={HeroBannerList} />
             <section className="px-5 pb-5">
-                <HorizontalScrollingList data={TrendingTvShowsList?.data?.data?.results} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending Tv Shows"} slidesPerView={6} />
-                <HorizontalScrollingList data={TopRatedTvShowsList?.data?.data?.results} title={"Top Rated Tv Shows"} slidesPerView={6} />
-                <HorizontalScrollingList data={AiringTodayTvShowsList?.data?.data?.results} title={"Airing Today Tv Shows"} slidesPerView={6} />
+                <HorizontalScrollingList data={TrendingTvShowsList} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending Tv Shows"} slidesPerView={6} />
+                <HorizontalScrollingList data={TopRatedTvShowsList} title={"Top Rated Tv Shows"} slidesPerView={6} />
+                <HorizontalScrollingList data={AiringTodayTvShowsList} title={"Airing Today Tv Shows"} slidesPerView={6} />
             </section>
         </>
     )

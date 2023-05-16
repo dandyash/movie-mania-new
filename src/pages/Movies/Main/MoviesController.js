@@ -14,18 +14,18 @@ const useMoviesController = () => {
   const NowPlayingMovies = useGetNowPlayingMovies();
 
   return {
-    HeroBannerList,
-    TrendingMovieList,
-    TopRatedMoviesList,
-    NowPlayingMovies,
-    UpcomingMoviesList,
+    HeroBannerList: HeroBannerList?.data?.data?.results,
+    TrendingMovieList: TrendingMovieList?.data?.data?.results,
+    TopRatedMoviesList: TopRatedMoviesList?.data?.data?.results,
+    NowPlayingMovies: NowPlayingMovies?.data?.data?.results,
+    UpcomingMoviesList: UpcomingMoviesList?.data?.data?.results,
     trendingPeriod,
     setTrendingPeriod,
     isDataLoading:
-      HeroBannerList.isLoading &&
-      TrendingMovieList.isLoading &&
-      TopRatedMoviesList.isLoading &&
-      NowPlayingMovies.isLoading &&
+      HeroBannerList.isLoading ||
+      TrendingMovieList.isLoading ||
+      TopRatedMoviesList.isLoading ||
+      NowPlayingMovies.isLoading ||
       UpcomingMoviesList.isLoading,
   };
 };

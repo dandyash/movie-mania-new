@@ -24,12 +24,12 @@ const Movies = () => {
 
     return (
         <>
-            <CarouselBanner data={HeroBannerList?.data?.data?.results} />
+            <CarouselBanner data={HeroBannerList} />
             <section className="px-5 pb-5">
-                <HorizontalScrollingList data={TrendingMovieList?.data?.data?.results} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending Movies"} slidesPerView={6} />
-                <HorizontalScrollingList data={TopRatedMoviesList?.data?.data?.results} title={"Top Rated Movies"} slidesPerView={6} />
-                <HorizontalScrollingList data={NowPlayingMovies?.data?.data?.results} title={"Now Playing Movies"} slidesPerView={6} />
-                <HorizontalScrollingList data={UpcomingMoviesList?.data?.data?.results} title={"Upcoming Movies"} slidesPerView={6} />
+                <HorizontalScrollingList data={TrendingMovieList} isTabbable={true} tabData={TRENDING_TAB_ITEMS} activeTab={trendingPeriod} setActiveTab={setTrendingPeriod} title={"Trending Movies"} slidesPerView={6} />
+                <HorizontalScrollingList data={TopRatedMoviesList} title={"Top Rated Movies"} slidesPerView={6} />
+                <HorizontalScrollingList data={NowPlayingMovies} title={"Now Playing Movies"} slidesPerView={6} />
+                <HorizontalScrollingList data={UpcomingMoviesList} title={"Upcoming Movies"} slidesPerView={6} />
             </section>
         </>
 

@@ -32,7 +32,7 @@ const HorizontalScrollingList = ({ isTabbable = false, tabData, title, data, sli
                 >
                     {data?.map((item) => <SwiperSlide key={item.id}><ImageCard data={item} /></SwiperSlide>)}
                 </Swiper>
-                <HorizontalScrollingNavigationButtonsContainer swiperRef={swiperRef.current} />
+                <HorizontalScrollingNavigationButtonsContainer swiperRef={swiperRef} />
             </div>
         </div>
     )

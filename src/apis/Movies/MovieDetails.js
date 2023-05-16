@@ -7,7 +7,7 @@ const MovieDetails = async (movieId) => {
     params: {
       session_id: localStorage.getItem("session"),
       append_to_response:
-        "reviews,account_states,videos,credits,recommendations,keywords",
+        "reviews,account_states,videos,credits,recommendations,similar,keywords",
     },
   });
 };
