@@ -8,6 +8,7 @@ import Collection from "./pages/Collections/Collection";
 import PersonDetails from "./pages/Person/PersonDetails";
 import Search from "./pages/Search/Search";
 import Footer from "./components/Footer";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/favorites/:favCategory" element={<Favorites />} />
           <Route path="/person/:personId" element={<PersonDetails />} />
           <Route path="/search/*" element={<Search />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />
